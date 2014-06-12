@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
 	// http://code.google.com/p/tesseract-ocr/downloads/list
 	public static final String lang = "eng";
 
-	private static final String TAG = "SimpleAndroidOCR.java";
+	private static final String TAG = "Meanings.java";
 
 	protected Button _button;
 	// protected ImageView _image;
@@ -220,6 +220,7 @@ public class MainActivity extends Activity {
 		String recognizedText = baseApi.getUTF8Text();
 		
 		baseApi.end();
+		
 
 		// You now have the text in recognizedText var, you can do anything with it.
 		// We will display a stripped out trimmed alpha-numeric version of it (if lang is eng)

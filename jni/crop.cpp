@@ -10,15 +10,25 @@ using namespace cv;
 
 int main(){
 
-    Mat im_rgb  = imread("image.jpg");
+    Mat im_rgb  = imread("imtest.jpg");
+    Mat dst;
+    int r = int(im_rgb.rows);
+    int c = int(im_rgb.cols);
+    cout<<r<<" "<<c;
+    r=r/2;
+    c=c/2;
+    int i=r-r/30;
+    int j = c-3*c/10;
+    int x = j;
+    int y = 3*c/10;
+    Rect rect = Rect( j, i, x, y );
+    cout<<i<<" "<<j<<" "<<x<<" "<<y;
     Mat im_gray;
-    cvtColor(im_rgb,im_gray,CV_RGB2GRAY);
+    im_rgb(rect).copyTo(dst);
+    cvtColor(dst,im_gray,CV_RGB2GRAY);
 
-    Mat img_bw = im_gray > 140;
-    int rows = img_bw.rows;
-    int cols = img_bw.cols;
-    cout >> rows >> " " >> cols;
-
+    Mat img_bw = im_gray > 100;
+    imwrite("cropped.jpg", dst);
     imwrite("image_bw.jpg", img_bw);
     return 0;
 }
